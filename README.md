@@ -72,3 +72,56 @@ Analyzes each command against a set of suspicious patterns (like wget, sudo su, 
 ### core/reporter.py
 
 Outputs results to the terminal with color-coded severity levels and saves them in JSON format.
+
+## 🖥️ Scripts
+
+### scripts/install.sh
+
+Installs Python dependencies (colorama) on your system.
+
+Usage:
+```bash
+chmod +x scripts/install.sh
+./scripts/install.sh
+```
+
+### scripts/log_history.sh
+
+Exports your current shell history into a separate file for backup or analysis.
+
+Usage:
+```bash
+chmod +x scripts/log_history.sh
+./scripts/log_history.sh
+```
+
+## 📦 File Structure
+
+```
+bashguard/
+├── bashguard/
+│   ├── cli.py
+│   └── core/
+│       ├── history_parser.py
+│       ├── risk_analyzer.py
+│       └── reporter.py
+├── scripts/
+│   ├── install.sh
+│   └── log_history.sh
+├── setup.py
+├── README.md
+└── LICENSE
+```
+
+## 📝 License
+
+This project is licensed under the MIT License – see LICENSE for details.
+
+## 🧪 Future Ideas
+
+⚪️ Add GUI support (via tkinter or streamlit)
+⚪️ Integrate with VirusTotal API for URL checking
+⚪️ Monitor user behavior over time
+⚪️ Real-time history watcher
+⚪️ Export reports to Markdown or HTML
+⚪️ Integration with SIEM systems (Splunk, ELK)
