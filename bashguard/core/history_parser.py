@@ -13,7 +13,7 @@ init(autoreset=True)
 def parse_args():
     parser = argparse.ArgumentParser(description='Collects all entered teams')
 
-    parser.add_argument('-jsd', '--json-dump', action='store_true', help='Save results in a separate file (JSON format)')
+    parser.add_argument('--json-dump', action='store_true', help='Save results in a separate file (JSON format)')
     parser.add_argument('-o', '--output', help='Way to save json report')
     parser.add_argument('-fs', '--filter-score', type=int, help='Filter the degree of risk (recommended 5)')
     parser.add_argument('-f', '--file', help='Add your file')
@@ -26,7 +26,7 @@ def parse_args():
     return args
     
 
-def history_parser(filepath: str) -> list:
+def history_parser(filepath):
     if os.path.isfile(filepath):
         try:
             with open(filepath, 'r', encoding='latin1') as f:

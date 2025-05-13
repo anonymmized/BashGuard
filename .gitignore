@@ -1,0 +1,44 @@
+# Byte-compiler / optimized / dunder files
+
+__pycache__
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+virtualenv/
+.pyenv/
+
+# History dumps and JSON reports
+reports/
+*.json 
+*.log
+
+# Shell history baskups
+history_dumps/
+
+# macOS spec
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux spec
+*~
+
+# VS code & other editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Distribution / build artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+*.whl
+
+# Docker
+docker-compose.override.yml
+*.tmp

@@ -125,3 +125,8 @@ This project is licensed under the MIT License – see LICENSE for details.
 ⚪️ Real-time history watcher
 ⚪️ Export reports to Markdown or HTML
 ⚪️ Integration with SIEM systems (Splunk, ELK)
+
+
+[![License](https://img.shields.io/github/license/anonymmized/BashGuard)](https://github.com/anonymmized/Bashuard)
+| [![Build](https://github.com/anonymmized/BashGuard/actions/workflows/ci.yml/badge.svg)](https://github.com/anonymmized/BashGuard/actions) | Сборка успешна / провалена |
+| [![Python Version](https://img.shields.io/pypi/pyversions/BashGuard)](https://pypi.org/project/BashGuard/) | Поддерживаемые версии Python |
