@@ -3,7 +3,6 @@
 A lightweight command-line tool that analyzes your Bash or Zsh history for suspicious patterns and potential security threats. Perfect for forensic analysis, penetration testing, or personal system monitoring.
 
 [![License](https://img.shields.io/github/license/anonymmized/BashGuard)](https://github.com/anonymmized/Bashuard)
-[![Python Version](https://img.shields.io/pypi/pyversions/BashGuard)](https://pypi.org/project/BashGuard/)
 
 ---
 
