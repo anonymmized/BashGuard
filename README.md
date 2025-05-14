@@ -36,6 +36,44 @@ git clone https://github.com/YOUR_USERNAME/bashguard.git
 cd bashguard
 pip install -e .
 ```
+## 🔑 make support
+
+### 1. Install 
+
+For installation, go to the root catalog and execute the command:
+```bash
+make install
+```
+### 2. Dependencies
+
+Next, the installation of dependencies:
+```bash
+make additions
+```
+### 3. Remove temp files
+
+To remove temporary files and caches:
+```bash
+make clean
+```
+### 4. Save history
+
+To save current shell history:
+```bash
+make log_history
+```
+### 5. Run CLI
+
+To run the CLI tool without any options:
+```bash
+make run
+```
+### 6. Run CLI with options
+
+Analyze shell history with risk filter:
+```bash
+make analyze
+```
 
 ## 🚀 Usage
 
@@ -114,6 +152,11 @@ It means that the `~/.local/bin` directory — where Python installs executable 
 
 To fix this, we recommend running our **automated setup script**, which detects your shell (Bash or Zsh) and adds `~/.local/bin` to your `PATH` permanently.
 
+It is also possible to solve this problem through:
+```bash
+make trouble
+```
+
 ### 🔧 Run the Setup Script
 
 ```bash
@@ -156,5 +199,3 @@ This project is licensed under the MIT License – see LICENSE for details.
 ⚪️ Real-time history watcher
 ⚪️ Export reports to Markdown or HTML
 ⚪️ Integration with SIEM systems (Splunk, ELK)
-
-
