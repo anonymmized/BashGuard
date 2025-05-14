@@ -38,35 +38,42 @@ def main():
     print(Fore.MAGENTA + "=" * 60 + '\n')
     time.sleep(2)
 
+    commands = []
+
     if args.file:
         try:
             commands = history_parser(args.file)
         except Exception as e:
-            print(f"A file reading error has occurred {args.file}: {e}")
+            print(f"🔴 A file reading error has occurred {args.file}: {e}")
+            exit(1)
     else:
         zsh_file = os.path.expanduser('~/.zsh_history')
         bash_file = os.path.expanduser('~/.bash_history')
-        if os.path.isfile(zsh_file):
-            commands = history_parser(zsh_file)
-        
-        elif os.path.isfile(bash_file):
-            commands = history_parser(bash_file)
-        
-    if commands:
-        print(Fore.MAGENTA + f"| Found: {len(commands)} commands")
-        time.sleep(1)
+
+        try:
+            if os.path.isfile(zsh_file):
+                commands = history_parser(zsh_file)
+            elif os.path.isfile(bash_file):
+                commands = history_parser(bash_file)
+            else:
+                print(Fore.RED + "🔴 No shell history file found (.zsh_history or .bash_history)")
+        except Exception as e:
+            print(f"🔴 Failed to read shell history: {e}")
+            exit(1)
 
     if not commands:
-        print(Fore.RED + "🔴 Not loaded a single team")
+        print(Fore.RED + "🔴 Not loaded a single command")
         exit(1)
-    
+
+    print(Fore.MAGENTA + f"| Found: {len(commands)} commands")
+    time.sleep(1)
     print(Fore.MAGENTA + '| Started creating a report...\n')
     time.sleep(1)
 
     result = check_command_for_risk(commands)
 
     if args.filter_score and args.filter_score <= 0:
-        parser.error()
+        parser.error("Filter score must be greater than zero")
 
     if args.filter_score:
         filtered_result = [e for e in result if e['score'] >= args.filter_score]
@@ -79,12 +86,12 @@ def main():
             time.sleep(0.005)
 
     if args.json_dump:
-        if args.output:
-            filepath = os.path.join(args.output, 'report.json')
+        output_dir = args.output if args.output else '../reports'
+        filepath = os.path.join(output_dir, 'report.json')
+        try:
             report_json(filepath, result)
-        else:
-            filepath = os.path.join('../reports', 'report.json')
-            report_json(filepath, result)
+        except Exception as e:
+            print(f"🔴 Failed to save JSON report: {e}")
 
 if __name__ == '__main__':
     main()

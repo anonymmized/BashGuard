@@ -75,6 +75,41 @@ Analyze shell history with risk filter:
 make analyze
 ```
 
+## 🐳 Docker Support
+
+BashGuard is now optimized for running inside Docker containers . You can easily use it in an isolated environment without worrying about dependencies or system modifications.
+
+## 📦 Build the Docker Image
+```bash
+docker build -t bashguard .
+```
+
+## 🚀 Run Analysis Inside a Container
+
+To scan your terminal history using Docker:
+```bash
+docker run -it --rm \
+    -v "$HOME/.bash_history:/root/.bash_history" \
+    -v "$(pwd)/reports:/app/reports" \
+    bashguard \
+    bashguard analyze
+```
+This:
+
+1. Mounts your .bash_history into the container,
+2. Saves output to ./reports/report.json,
+3. Uses isolated environment (no impact on host system).
+## 🧪 Run Manually Inside the Container
+
+You can also enter the container manually and run commands interactively:
+```bash
+docker run -it --rm bashguard bash
+```
+Then execute:
+```bash
+bashguard analyze
+```
+
 ## 🚀 Usage
 
 ### Analyze terminal history:
