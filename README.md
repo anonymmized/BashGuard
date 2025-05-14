@@ -97,6 +97,35 @@ chmod +x scripts/log_history.sh
 ./scripts/log_history.sh
 ```
 
+## 🛠 Troubleshooting
+
+### `bashguard: command not found`
+
+If you see the error:
+```bash
+zsh: command not found: bashguard
+```
+or 
+```bash
+bash: command not found: bashguard
+```
+
+It means that the `~/.local/bin` directory — where Python installs executable scripts — is not in your shell's `PATH`.
+
+To fix this, we recommend running our **automated setup script**, which detects your shell (Bash or Zsh) and adds `~/.local/bin` to your `PATH` permanently.
+
+### 🔧 Run the Setup Script
+
+```bash
+./scripts/setup_path.sh
+```
+
+After running the script, verify it worked:
+```bash
+which bashguard
+```
+
+
 ## 📦 File Structure
 
 ```
