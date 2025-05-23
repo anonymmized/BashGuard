@@ -1,9 +1,39 @@
 import os
 import json 
+from datetime import datetime
 from colorama import Fore, init
 from .risk_analyzer import check_command_for_risk
 
 init(autoreset=True)
+
+def get_risk_label(score):
+    if score >= 7:
+        return "High 🔴"
+    elif score >= 4:
+        return "Medium 🟡"
+    else:
+        return "Low 🟢"
+
+
+def report_markdown(filepath, result):
+    try:
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+
+        with open(filepath, 'w') as f:
+            f.write("# BashGuard - Анализ истории команд\n\n")
+            f.write("Дата: {}\n\n".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
+            f.write("| Команда | Уровень риска | Описание |\n")
+            f.write("|----------|----------------|-----------|\n")
+
+            for entry in result:
+                risk_label = get_risk_label(entry['score'])
+                if "🟡" in risk_label or "🔴" in risk_label:
+                    f.write(f"| `{entry['command']}` | {risk_label} | {entry.get('match', '—')} |\n")
+        print(f"[+] Отчет сохранён в Markdown: {filepath}")
+
+    
+    except Exception as e:
+        print(f"🔴 Failed to save markdown report: {e}")
 
 def report_json(filepath, result):
     directory = os.path.dirname(filepath)

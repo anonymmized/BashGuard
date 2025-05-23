@@ -7,7 +7,7 @@ from colorama import Fore, init
 
 from .core.history_parser import history_parser
 from .core.risk_analyzer import check_command_for_risk
-from .core.reporter import report_json, colorama_set
+from .core.reporter import report_json, report_markdown, colorama_set
 
 init(autoreset=True)
 
@@ -18,7 +18,7 @@ def parse_args():
     analyze_parser = subparsers.add_parser('analyze', help='Analyze the history of the teams')
     analyze_parser.add_argument('-f', '--file', help='Specify a file with a story')
     analyze_parser.add_argument('-fs', '--filter-score', type=int, help='Filter at risk')
-    analyze_parser.add_argument('--json-dump', action='store_true', help='Save results in json')
+    analyze_parser.add_argument("--report-format", choices=["json", "markdown"], default="json", help="Формат отчета json или markdown")
     analyze_parser.add_argument('-o', '--output', default='reports', help='Way to save report')
 
     args = parser.parse_args()
@@ -85,13 +85,21 @@ def main():
             colorama_set(event)
             time.sleep(0.005)
 
-    if args.json_dump:
-        output_dir = args.output if args.output else '../reports'
+    if args.report_format == "json":
+        output_dir = args.output if args.output else "../reports"
         filepath = os.path.join(output_dir, 'report.json')
         try:
             report_json(filepath, result)
         except Exception as e:
-            print(f"🔴 Failed to save JSON report: {e}")
+            print(f"🔴 Failed to save JSON report: {e}")  
+
+    elif args.report_format == "markdown":
+        output_dir = args.output if args.output else "../reports"
+        filepath = os.path.join(output_dir, 'report.md')
+        try:
+            report_markdown(filepath, result)
+        except Exception as e:
+            print(f"🔴 Failed to save markdown report: {e}")
 
 if __name__ == '__main__':
     main()

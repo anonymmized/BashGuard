@@ -12,7 +12,7 @@ A lightweight command-line tool that analyzes your Bash or Zsh history for suspi
 - Detects suspicious commands (e.g., `wget`, `chmod +x`, `history -c`)
 - Assigns risk scores to detected commands
 - Outputs results with color-coded warnings
-- Exports findings into a JSON file
+- Exports findings into a JSON or MARKDOWN file
 - Supports filtering by risk score
 - Includes bash scripts for setup and history logging
 - Works across macOS, Linux, and Raspberry Pi
@@ -114,19 +114,19 @@ bashguard analyze
 
 ### Analyze terminal history:
 ```bash
-bashguard analyze -fs 5 --json-dump -o reports
+bashguard analyze -fs 5 --report-format -o reports
 ```
 
 ### Available Options:
 
 1) -f:--file            Use a custom history file instead of default .bash_history or .zsh_history
 2) -fs:--filter-score   Show only commands with a risk score equal or higher than this value
-3) --json-dump          Save output as JSON
-4) -o:--output          Specify output directory for JSON report
+3) --report-format json/markdown         Save output as JSON or MARKDOWN 
+4) -o:--output          Specify output directory for report file
 
 Example: 
 ```bash
-bashguard analyze --filter-score 7 --json-dump -o ./reports
+bashguard analyze --filter-score 7 --report-format -o ./reports
 ```
 This will:
 
@@ -146,7 +146,7 @@ Analyzes each command against a set of suspicious patterns (like wget, sudo su, 
 
 ### core/reporter.py
 
-Outputs results to the terminal with color-coded severity levels and saves them in JSON format.
+Outputs results to the terminal with color-coded severity levels and saves them in JSON/MARKDOWN format.
 
 ## 🖥️ Scripts
 
