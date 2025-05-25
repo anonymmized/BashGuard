@@ -18,7 +18,7 @@ def parse_args():
     analyze_parser = subparsers.add_parser('analyze', help='Analyze the history of the teams')
     analyze_parser.add_argument('-f', '--file', help='Specify a file with a story')
     analyze_parser.add_argument('-fs', '--filter-score', type=int, help='Filter at risk')
-    analyze_parser.add_argument("--report-format", choices=["json", "markdown"], default="json", help="Формат отчета json или markdown")
+    analyze_parser.add_argument("--report-format", choices=["json", "markdown"], default="json", help="JSON or MarkDown report format")
     analyze_parser.add_argument('-o', '--output', default='reports', help='Way to save report')
 
     args = parser.parse_args()

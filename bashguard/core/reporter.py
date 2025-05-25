@@ -20,16 +20,16 @@ def report_markdown(filepath, result):
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
         with open(filepath, 'w') as f:
-            f.write("# BashGuard - Анализ истории команд\n\n")
-            f.write("Дата: {}\n\n".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
-            f.write("| Команда | Уровень риска | Описание |\n")
+            f.write("# BashGuard - Analysis of the history of teams\n\n")
+            f.write("Date: {}\n\n".format(datetime.now().strftime("%Y-%m-%d %H:%M")))
+            f.write("| Command | Risk level | Description |\n")
             f.write("|----------|----------------|-----------|\n")
 
             for entry in result:
                 risk_label = get_risk_label(entry['score'])
                 if "🟡" in risk_label or "🔴" in risk_label:
                     f.write(f"| `{entry['command']}` | {risk_label} | {entry.get('match', '—')} |\n")
-        print(f"[+] Отчет сохранён в Markdown: {filepath}")
+        print(f"🟢 The report is saved in Markdown: {filepath}")
 
     
     except Exception as e:
