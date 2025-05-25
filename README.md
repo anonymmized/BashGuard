@@ -18,7 +18,6 @@ A lightweight command-line tool that analyzes your Bash or Zsh history for suspi
 - Works across macOS, Linux, and Raspberry Pi
 
 ---
----
 
 ## 🛠️ Installation
 
@@ -130,7 +129,6 @@ Then execute:
 bashguard analyze
 ```
 
----
 ---
 
 ## 🚀 Usage
