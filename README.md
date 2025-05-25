@@ -144,7 +144,7 @@ bashguard analyze -fs 5 --report-format -o reports
 1) -f or --file  ->  Use a custom history file instead of default .bash_history or .zsh_history
 2) -fs or --filter-score  ->  Show only commands with a risk score equal or higher than this value
 3) --report-format (json/markdown)  ->  Save output as JSON or MARKDOWN 
-4) -o:--output  ->  Specify output directory for report file
+4) -o: or --output  ->  Specify output directory for report file
 
 Example: 
 
